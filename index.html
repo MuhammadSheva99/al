@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Happy Graduation - Stiffalda Aufiannisa Fajrin</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&family=Pinyon+Script&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ivory: #f7f2e8;
+  --parch: #ede4cf;
+  --ink: #1c1409;
+  --sepia: #3d2b1a;
+  --gold: #b8882a;
+  --gold-l: #d4a84b;
+  --gold-dim: rgba(184,136,42,0.25);
+  --maroon: #6b1e2a;
+  --sage: #4a5e47;
+  --dim: rgba(28,20,9,0.5);
+}
+
+html, body {
+  width: 100%; height: 100%;
+  background: #0d0a05;
+  overflow: hidden;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 1000; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+  opacity: 0.4; mix-blend-mode: overlay;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 999; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(5,3,1,0.75) 100%);
+}
+
+.scene {
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; z-index: 10;
+  transition: opacity 0.9s ease;
+  overflow-y: auto;
+}
+.scene.active { opacity: 1; pointer-events: all; }
+
+/* SCENE 0 */
+#s0 {
+  background: #0d0a05;
+  flex-direction: column;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cover-seal {
+  width: 90px; height: 90px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  margin-bottom: 1.4rem;
+}
+.cover-seal::before {
+  content: '';
+  position: absolute; inset: 5px;
+  border: 1px solid var(--gold-dim);
+  border-radius: 50%;
+}
+.cover-seal-inner {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: var(--gold);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.cover-ornament {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold-l);
+  opacity: 1;
+  margin-bottom: 0.8rem;
+}
+
+.cover-title-main {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(2.8rem, 10vw, 5.5rem);
+  color: var(--ivory);
+  line-height: 1;
+  text-shadow: 0 0 80px rgba(184,136,42,0.3);
+  margin-bottom: 0.3rem;
+}
+
+.cover-name {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 4vw, 1.8rem);
+  color: var(--gold-l);
+  letter-spacing: 0.08em;
+  margin-bottom: 1.6rem;
+}
+
+.cover-rule {
+  width: 180px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0.5rem auto 1.4rem;
+}
+
+.cover-photo-frame {
+  position: relative;
+  width: min(220px, 65vw);
+  background: var(--parch);
+  padding: 10px 10px 42px;
+  box-shadow: 0 12px 60px rgba(0,0,0,0.7), inset 0 0 0 1px rgba(184,136,42,0.2);
+  transform: rotate(-0.8deg);
+  transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+.cover-photo-frame:hover { transform: rotate(0deg) scale(1.02); }
+.cover-photo-inner {
+  width: 100%; aspect-ratio: 3/4;
+  background: #2a1f14;
+  overflow: hidden; position: relative;
+}
+.cover-photo-inner::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(184,136,42,0.06), rgba(107,30,42,0.08));
+}
+.cover-photo-caption {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--sepia);
+  text-align: center;
+  padding: 6px 4px 0;
+  line-height: 1.35;
+}
+
+.cover-hint {
+  margin-top: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: rgba(247,242,232,0.25);
+  animation: blink 3s ease-in-out infinite;
+}
+
+.year-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  color: rgba(184,136,42,0.4);
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+
+/* SCENE 1 */
+#s1 {
+  background: radial-gradient(ellipse at 35% 55%, #1e1408 0%, #080502 100%);
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(2rem, 7vw, 6rem);
+  padding-bottom: 6rem;
+}
+
+.s1-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold-l);
+  opacity: 1;
+  margin-bottom: 1.2rem;
+}
+.s1-kaligrafi {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(3rem, 14vw, 9rem);
+  color: var(--ivory);
+  line-height: 0.95;
+  text-shadow: 0 0 100px rgba(184,136,42,0.25);
+}
+.s1-kaligrafi span { color: var(--gold-l); display: block; }
+.s1-name {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.3rem, 4.5vw, 2.8rem);
+  color: var(--gold-l);
+  margin-top: 0.5rem;
+  letter-spacing: 0.04em;
+}
+.s1-degree {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.78rem, 2vw, 0.95rem);
+  color: rgba(247,242,232,0.78);
+  font-style: italic;
+  margin-top: 0.8rem;
+  border-left: 1px solid var(--gold-dim);
+  padding-left: 1rem;
+  line-height: 1.8;
+  max-width: 380px;
+}
+.s1-deco {
+  position: absolute;
+  right: clamp(1rem, 5vw, 4rem);
+  bottom: clamp(4rem, 10vw, 6rem);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 12vw, 8rem);
+  color: rgba(184,136,42,0.05);
+  transform: rotate(10deg);
+  user-select: none;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* SCENE 2 */
+#s2 {
+  background: #080602;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1rem 1rem 6rem;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: max(1.5rem, env(safe-area-inset-top));
+}
+
+.section-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.8rem;
+  color: rgba(247,242,232,0.6);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.polaroid-wall {
+  position: relative;
+  width: min(700px, 95vw);
+  height: min(420px, 60vh);
+  display: block;
+}
+.polaroid {
+  position: absolute;
+  background: var(--ivory);
+  padding: 7px 7px 36px;
+  box-shadow: 3px 6px 30px rgba(0,0,0,0.65);
+  transition: box-shadow 0.3s;
+}
+.polaroid:hover { box-shadow: 8px 14px 50px rgba(0,0,0,0.85); z-index: 20 !important; }
+.polaroid-img {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: #2a1f14;
+  position: relative; overflow: hidden;
+}
+.polaroid-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(145deg, rgba(184,136,42,0.07), rgba(107,30,42,0.06));
+}
+.polaroid-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 0.72rem;
+  color: var(--sepia);
+  text-align: center;
+  padding: 4px 6px 6px;
+  line-height: 1.2;
+}
+.tape {
+  position: absolute;
+  width: 42px; height: 13px;
+  background: rgba(184,136,42,0.3);
+  border-radius: 1px;
+  z-index: 2;
+}
+
+@media (max-width: 600px) {
+  .polaroid-wall {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+    height: auto !important;
+    position: static;
+  }
+  .polaroid {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    padding: 5px 5px 28px;
+  }
+  .polaroid:nth-child(odd) { transform: rotate(-1.5deg) !important; }
+  .polaroid:nth-child(even) { transform: rotate(1.5deg) !important; }
+  .polaroid-img { height: 70px !important; }
+  .polaroid-label { font-size: 0.6rem; }
+}
+
+/* SCENE 3 */
+#s3 {
+  background: radial-gradient(ellipse at 60% 40%, #1a1005 0%, #050302 100%);
+  align-items: center; justify-content: center;
+  padding: 1rem; padding-bottom: 5rem;
+}
+
+.letter-paper {
+  background: var(--ivory);
+  max-width: 520px; width: 100%;
+  padding: clamp(1.5rem, 5vw, 3rem) clamp(1.5rem, 5vw, 3.5rem);
+  padding-bottom: 2.5rem;
+  box-shadow: 6px 10px 60px rgba(0,0,0,0.75);
+  position: relative;
+  transform: rotate(0.3deg);
+  border: 1px solid rgba(184,136,42,0.15);
+}
+
+.letter-paper::before, .letter-paper::after {
+  content: '';
+  position: absolute;
+  width: 40px; height: 40px;
+  border-color: var(--gold);
+  border-style: solid;
+  opacity: 0.35;
+}
+.letter-paper::before { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+.letter-paper::after { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+
+.letter-lines {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    transparent, transparent 31px, rgba(0,0,0,0.05) 31px, rgba(0,0,0,0.05) 32px
+  );
+  background-position: 0 52px;
+  pointer-events: none;
+}
+
+.letter-rule-top {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin-bottom: 1.2rem;
+  opacity: 0.4;
+}
+
+.letter-header {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #9a8060;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.letter-salut {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  color: var(--sepia);
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.letter-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.85rem, 2vw, 0.98rem);
+  color: #2e1f10;
+  line-height: 1.75;
+}
+.letter-body p + p { margin-top: 0.6rem; }
+
+.letter-sig-area {
+  margin-top: 1.4rem;
+  display: flex; flex-direction: column;
+  align-items: flex-end; gap: 0.2rem;
+}
+.letter-sig-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.8rem;
+  color: #9a8060;
+  font-style: italic;
+}
+.letter-sig {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 2rem;
+  color: var(--maroon);
+  line-height: 1;
+}
+
+.letter-rule-bot {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin-top: 1.2rem;
+  opacity: 0.3;
+}
+
+/* SCENE 4 */
+#s4 {
+  background: #060401;
+  flex-direction: column;
+  padding: 2rem 2rem 6rem;
+  gap: 0.6rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.s4-header {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  color: var(--gold-l);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 1;
+  margin-bottom: 0.4rem;
+}
+
+.wish-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 500px; width: 100%;
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.wish-row.show { opacity: 1; transform: none; }
+
+.wish-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  opacity: 0.5;
+  padding-top: 3px;
+  min-width: 1.8rem;
+  text-align: right;
+}
+.wish-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  color: var(--ivory);
+  line-height: 1.25;
+}
+.wish-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+  color: rgba(247,242,232,0.65);
+  line-height: 1.5;
+  margin-top: 2px;
+}
+.wish-divider {
+  width: 100%; max-width: 500px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184,136,42,0.12), transparent);
+}
+
+/* SCENE 5 */
+#s5 {
+  background: #070502;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  gap: 0;
+}
+
+.final-ornament {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.5em;
+  color: rgba(184,136,42,0.3);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.final-rule {
+  width: 140px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 1.8rem;
+  opacity: 0.4;
+}
+
+.final-big {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(3rem, 11vw, 7rem);
+  color: var(--ivory);
+  line-height: 1;
+  text-shadow: 0 0 80px rgba(184,136,42,0.35);
+}
+.final-name-f {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.6rem, 7vw, 4.5rem);
+  color: var(--gold-l);
+  line-height: 1.2;
+  text-shadow: 0 0 50px rgba(184,136,42,0.4);
+}
+.final-degree {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.72rem, 2vw, 0.88rem);
+  color: rgba(247,242,232,0.3);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+.final-tagline {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+  color: rgba(247,242,232,0.4);
+  max-width: 320px;
+  line-height: 2;
+  margin: 1.2rem 0 1.8rem;
+}
+
+.final-seal {
+  width: 64px; height: 64px;
+  border: 1px solid rgba(184,136,42,0.4);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  animation: rotateSeal 20s linear infinite;
+}
+.final-seal::before {
+  content: '';
+  position: absolute; inset: 5px;
+  border: 1px solid rgba(184,136,42,0.2);
+  border-radius: 50%;
+}
+.final-seal-inner {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  font-weight: 300;
+}
+@keyframes rotateSeal { to { transform: rotate(360deg); } }
+
+/* NAV */
+.nav-btn {
+  position: fixed;
+  bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
+  left: 50%; transform: translateX(-50%);
+  z-index: 500;
+  background: none; border: none; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center;
+}
+.nav-btn-pill {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem; font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 0.65rem 2.2rem;
+  border-radius: 2px;
+  display: flex; align-items: center; gap: 0.5rem;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  white-space: nowrap;
+  border: 1px solid rgba(184,136,42,0.3);
+}
+.nav-btn:hover .nav-btn-pill { transform: scale(1.03); background: #fff; }
+.nav-btn:active .nav-btn-pill { transform: scale(0.97); }
+
+.restart-btn {
+  position: fixed;
+  bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
+  left: 50%; transform: translateX(-50%);
+  z-index: 500;
+  background: var(--ivory); color: var(--ink);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem; font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 0.65rem 2.2rem;
+  border-radius: 2px; border: 1px solid rgba(184,136,42,0.3); cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  transition: transform 0.2s;
+}
+.restart-btn:hover { transform: translateX(-50%) scale(1.03); }
+
+.progress-bar {
+  position: fixed; bottom: 0; left: 0;
+  height: 1px; background: var(--gold);
+  z-index: 500; transition: width 0.6s ease; opacity: 0.6;
+}
+
+.music-toggle {
+  position: fixed;
+  top: max(1.2rem, env(safe-area-inset-top, 1.2rem));
+  right: 1.2rem;
+  z-index: 600;
+  background: rgba(247,242,232,0.06);
+  border: 1px solid rgba(247,242,232,0.1);
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 0.95rem;
+  color: rgba(255,255,255,0.4);
+  transition: background 0.3s;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Cormorant Garamond', serif;
+}
+.music-toggle:hover { background: rgba(247,242,232,0.12); }
+
+.petal-el {
+  position: fixed; pointer-events: none; z-index: 5;
+  animation: petalDrift var(--dur) linear infinite;
+  animation-delay: var(--del); opacity: 0;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--gold);
+}
+@keyframes petalDrift {
+  0% { transform: translateY(-20px) translateX(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.45; }
+  100% { transform: translateY(110vh) translateX(var(--x)) rotate(var(--r)); opacity: 0; }
+}
+
+@keyframes blink { 0%,100% { opacity: 0.2; } 50% { opacity: 0.7; } }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="pbar" style="width:0%"></div>
+<button class="music-toggle" id="mBtn" onclick="toggleMusic()">&#9834;</button>
+<button class="nav-btn" id="navBtn" onclick="next()">
+  <div class="nav-btn-pill"><span id="navLabel">buka surat</span></div>
+</button>
+<button class="restart-btn" id="restartBtn" onclick="restart()">mulai ulang</button>
+
+<!-- SCENE 0 — COVER -->
+<div class="scene active" id="s0" onclick="next()">
+  <div class="cover-seal">
+    <div class="cover-seal-inner">A</div>
+  </div>
+  <div class="cover-ornament">selamat menyelesaikan</div>
+  <div class="cover-title-main">Studi</div>
+  <div class="cover-name">Aldaaa</div>
+  <div class="cover-rule"></div>
+  <div class="cover-photo-frame">
+    <div class="cover-photo-inner">
+      <img src="images/1.jpeg" alt="cover" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display='none'"/>
+    </div>
+    <div class="cover-photo-caption">hari yang sudah lama ditunggu</div>
+  </div>
+  <p class="cover-hint">— sentuh untuk membuka —</p>
+  <div class="year-tag">MMXXVI</div>
+</div>
+
+<!-- SCENE 1 -->
+<div class="scene" id="s1">
+  <p class="s1-label">Dengan sepenuh hati</p>
+  <h1 class="s1-kaligrafi">Happy<span>Graduation,</span></h1>
+  <div class="s1-name">Aldaaa</div>
+  <p class="s1-degree">
+    Kamu sudah menempuh perjalanan panjang<br>
+    dengan tekad yang tidak pernah padam.<br>
+    7 Mei 2026, semua itu terbayar.
+  </p>
+  <div class="s1-deco">S.Pd.</div>
+</div>
+
+<!-- SCENE 2 — POLAROID -->
+<div class="scene" id="s2">
+  <p class="section-tag">Kenangan sepanjang perjalanan</p>
+  <div class="polaroid-wall">
+
+    <div class="polaroid" style="width:155px;left:2%;top:5%;transform:rotate(-4deg);z-index:3">
+      <div class="tape" style="top:-7px;left:50%;transform:translateX(-50%)"></div>
+      <div class="polaroid-img" style="height:110px">
+        <img src="images/3.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display='none'"/>
+      </div>
+      <div class="polaroid-label">Dia</div>
+    </div>
+
+    <div class="polaroid" style="width:170px;left:28%;top:0%;transform:rotate(1.5deg);z-index:5">
+      <div class="tape" style="top:-7px;right:20px"></div>
+      <div class="polaroid-img" style="height:125px">
+        <img src="images/2.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display='none'"/>
+      </div>
+      <div class="polaroid-label">Cantikknyaa</div>
+    </div>
+
+    <div class="polaroid" style="width:148px;right:3%;top:8%;transform:rotate(3.5deg);z-index:4">
+      <div class="tape" style="top:-7px;left:15px;transform:rotate(-8deg)"></div>
+      <div class="polaroid-img" style="height:105px">
+        <img src="images/7.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display='none'"/>
+      </div>
+      <div class="polaroid-label">Senyum terbaik</div>
+    </div>
+
+    <div class="polaroid" style="width:162px;left:5%;bottom:5%;transform:rotate(2deg);z-index:2">
+      <div class="tape" style="bottom:-7px;left:50%;transform:translateX(-50%)"></div>
+      <div class="polaroid-img" style="height:118px">
+        <img src="images/4.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display='none'"/>
+      </div>
+      <div class="polaroid-label">Momen tak terlupakan</div>
+    </div>
+
+    <div class="polaroid" style="width:175px;left:32%;bottom:2%;transform:rotate(-2.5deg);z-index:6">
+      <div class="tape" style="top:-7px;left:30px;transform:rotate(5deg)"></div>
+      <div class="polaroid-img" style="height:130px">
+        <img src="images/5.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display='none'"/>
+      </div>
+      <div class="polaroid-label">Cewe yang kuat dan kerenn</div>
+    </div>
+
+    <div class="polaroid" style="width:150px;right:1%;bottom:8%;transform:rotate(-3deg);z-index:3">
+      <div class="tape" style="top:-7px;right:18px;transform:rotate(-4deg)"></div>
+      <div class="polaroid-img" style="height:108px">
+        <img src="images/6.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display='none'"/>
+      </div>
+      <div class="polaroid-label">Orang yang aku kagumi</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SCENE 3 — SURAT -->
+<div class="scene" id="s3">
+  <div class="letter-paper">
+    <div class="letter-lines"></div>
+    <div class="letter-rule-top"></div>
+    <div class="letter-header">surat kecil untuk bububb</div>
+    <div class="letter-salut">Aldaaa,</div>
+    <div class="letter-body">
+      <p>7 Mei 2026, kamu berdiri di titik yang dulu mungkin terasa jauh sekali. Semua esai dalam bahasa yang bukan bahasa ibu, semua lesson plan yang dikerjakan ulang, semua ujian micro-teaching yang menguras tenaga - semua itu hari ini menjelma menjadi toga yang sangat layak kamu banggakan.</p>
+      <p>Kamu tidak hanya lulus. Kamu telah membuktikan bahwa mendidik adalah panggilan, dan kamu menjawab panggilan itu dengan sepenuh hati. Ada banyak orang yang kelak akan belajar dari caramu mengajar, dari kesabaranmu, dari caramu mencintai bahasa.</p>
+      <p>Dunia butuh guru seperti kamu - yang tidak hanya mengajarkan grammar dan vocabulary, tapi juga membuka pintu dunia lewat kata-kata. Kelas yang menunggumu di luar sana sudah siap untuk dirimu.</p>
+      <p>Selamat, Aldaaa. Bab ini selesai dengan indah, dan bab berikutnya bahkan lebih menjanjikan.</p>
+    </div>
+    <div class="letter-rule-bot"></div>
+    <div class="letter-sig-area">
+      <span class="letter-sig-label">dari aku, yang selalu bangga,</span>
+      <span class="letter-sig">Sheva</span>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 4 — DOA -->
+<div class="scene" id="s4">
+  <div class="s4-header">doa yang aku titipkan</div>
+
+  <div class="wish-row" id="w0">
+    <div class="wish-num">i.</div>
+    <div class="wish-content">
+      <div class="wish-title">menjadi pendidik yang dicintai</div>
+      <div class="wish-desc">semoga murid-muridmu kelak mengingat namamu sebagai seseorang yang mengubah hidup mereka</div>
+    </div>
+  </div>
+  <div class="wish-divider"></div>
+
+  <div class="wish-row" id="w1">
+    <div class="wish-num">ii.</div>
+    <div class="wish-content">
+      <div class="wish-title">karir yang membuka dunia</div>
+      <div class="wish-desc">lewat bahasa yang kamu ajarkan, semoga banyak pintu terbuka untuk kamu dan untuk mereka</div>
+    </div>
+  </div>
+  <div class="wish-divider"></div>
+
+  <div class="wish-row" id="w2">
+    <div class="wish-num">iii.</div>
+    <div class="wish-content">
+      <div class="wish-title">rezeki yang lapang</div>
+      <div class="wish-desc">datang dari arah yang tak disangka, berkah untuk dirimu dan orang-orang di sekelilingmu</div>
+    </div>
+  </div>
+  <div class="wish-divider"></div>
+
+  <div class="wish-row" id="w3">
+    <div class="wish-num">iv.</div>
+    <div class="wish-content">
+      <div class="wish-title">semangat yang tak pernah habis</div>
+      <div class="wish-desc">bahkan di hari-hari di mana mengajar terasa berat dan kata-kata terasa jauh</div>
+    </div>
+  </div>
+  <div class="wish-divider"></div>
+
+  <div class="wish-row" id="w4">
+    <div class="wish-num">v.</div>
+    <div class="wish-content">
+      <div class="wish-title">kita terus menulis cerita</div>
+      <div class="wish-desc">masih banyak halaman yang ingin aku tulis bersamamu, setelah wisuda ini</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 5 — FINAL -->
+<div class="scene" id="s5">
+  <div class="final-ornament">sebuah pencapaian yang abadi</div>
+  <div class="final-rule"></div>
+  <div class="final-big">Happy Graduation,</div>
+  <div class="final-name-f">Aldaaa</div>
+  <div class="final-degree">Sarjana Pendidikan Bahasa Inggris &mdash; 2026</div>
+  <p class="final-tagline">
+    Kamu sudah selesaikan yang tersulit.<br>
+    Sekarang waktunya melangkah lebih jauh.
+  </p>
+  <div class="final-seal">
+    <div class="final-seal-inner">S.Pd.</div>
+  </div>
+</div>
+
+<script>
+const scenes = document.querySelectorAll('.scene');
+const TOTAL = scenes.length;
+let cur = 0;
+const labels = ['buka surat','lanjut','lanjut','lanjut','lanjut',''];
+const progSteps = [0, 20, 40, 60, 80, 100];
+
+function showScene(n) {
+  scenes[cur].style.opacity = '0';
+  scenes[cur].style.pointerEvents = 'none';
+  setTimeout(() => scenes[cur].classList.remove('active'), 900);
+  cur = n;
+  scenes[cur].classList.add('active');
+  setTimeout(() => { scenes[cur].style.opacity = '1'; scenes[cur].style.pointerEvents = 'all'; }, 60);
+  document.getElementById('pbar').style.width = progSteps[cur] + '%';
+  const nb = document.getElementById('navBtn');
+  const rb = document.getElementById('restartBtn');
+  if (cur === TOTAL - 1) {
+    nb.style.display = 'none'; rb.style.display = 'block'; fireConfetti();
+  } else {
+    nb.style.display = 'flex'; rb.style.display = 'none';
+    document.getElementById('navLabel').textContent = labels[cur + 1] || 'lanjut';
+  }
+  if (cur === 4) animateWishes();
+}
+
+function next() {
+  if (cur < TOTAL - 1) {
+    if (!playing) {
+      audioEl.play().catch(() => {});
+      playing = true;
+      document.getElementById('mBtn').style.color = '#b8882a';
+    }
+    showScene(cur + 1);
+  }
+}
+
+function restart() {
+  document.getElementById('restartBtn').style.display = 'none';
+  document.getElementById('navBtn').style.display = 'flex';
+  document.getElementById('navLabel').textContent = labels[1];
+  scenes[cur].style.opacity = '0'; scenes[cur].style.pointerEvents = 'none';
+  setTimeout(() => {
+    scenes[cur].classList.remove('active');
+    cur = 0; scenes[0].classList.add('active');
+    scenes[0].style.opacity = '1'; scenes[0].style.pointerEvents = 'all';
+    document.getElementById('pbar').style.width = '0%';
+  }, 900);
+}
+
+function animateWishes() {
+  for (let i = 0; i < 5; i++) {
+    const el = document.getElementById('w' + i);
+    el.classList.remove('show');
+    setTimeout(() => el.classList.add('show'), 100 + i * 220);
+  }
+}
+
+const cc = document.createElement('canvas');
+cc.style.cssText = 'position:fixed;inset:0;z-index:300;pointer-events:none';
+document.body.appendChild(cc);
+const cx = cc.getContext('2d');
+let cp = [], ca = false;
+function rccc() { cc.width = innerWidth; cc.height = innerHeight; }
+addEventListener('resize', rccc); rccc();
+const ccols = ['#b8882a','#d4a84b','#f7f2e8','#ede4cf','#6b1e2a','#4a5e47','#c9aa6e'];
+function fireConfetti() {
+  for (let i = 0; i < 160; i++) cp.push({
+    x: Math.random()*cc.width, y: -20-Math.random()*200,
+    r: 2+Math.random()*4, col: ccols[Math.floor(Math.random()*ccols.length)],
+    vx: -1.5+Math.random()*3, vy: 1.2+Math.random()*3.5,
+    g: 0.05, rot: Math.random()*360, rs: -3+Math.random()*6,
+    sh: Math.random()>0.4, op: 1
+  });
+  if (!ca) loopC();
+}
+function loopC() {
+  ca = true; cx.clearRect(0,0,cc.width,cc.height);
+  cp = cp.filter(p => p.op > 0.01);
+  cp.forEach(p => {
+    p.x+=p.vx; p.vy+=p.g; p.y+=p.vy; p.rot+=p.rs;
+    if (p.y>cc.height*0.82) p.op-=0.01;
+    cx.save(); cx.globalAlpha=p.op; cx.translate(p.x,p.y);
+    cx.rotate(p.rot*Math.PI/180); cx.fillStyle=p.col;
+    if (p.sh) cx.fillRect(-p.r,-p.r*0.4,p.r*2,p.r*0.8);
+    else { cx.beginPath(); cx.arc(0,0,p.r,0,Math.PI*2); cx.fill(); }
+    cx.restore();
+  });
+  if (cp.length) requestAnimationFrame(loopC); else ca = false;
+}
+
+const petalChars = ['✦','·','✧','◦','∗'];
+function spawnPetal() {
+  const el = document.createElement('div');
+  el.className = 'petal-el';
+  el.textContent = petalChars[Math.floor(Math.random()*petalChars.length)];
+  const dur = (6+Math.random()*8).toFixed(1)+'s';
+  const del = (Math.random()*4).toFixed(1)+'s';
+  const x = (-60+Math.random()*120).toFixed(0)+'px';
+  const r = (-180+Math.random()*360).toFixed(0)+'deg';
+  el.style.cssText = `left:${Math.random()*100}vw;top:-20px;--dur:${dur};--del:${del};--x:${x};--r:${r};font-size:${0.5+Math.random()*0.7}rem;opacity:0;`;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), (parseFloat(dur)+parseFloat(del)+1)*1000);
+}
+setInterval(spawnPetal, 2000);
+
+const audioEl = new Audio('images/m.mp3');
+audioEl.loop = true;
+let playing = false;
+function toggleMusic() {
+  const btn = document.getElementById('mBtn');
+  if (!playing) {
+    audioEl.play().catch(()=>{});
+    playing = true;
+    btn.style.color = '#b8882a';
+  } else {
+    audioEl.pause();
+    playing = false;
+    btn.style.color = '';
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' ','Enter'].includes(e.key)) { e.preventDefault(); next(); }
+});
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+document.addEventListener('touchend', e => {
+  if (touchStartX - e.changedTouches[0].clientX > 50) next();
+}, {passive:true});
+</script>
+</body>
+</html>
